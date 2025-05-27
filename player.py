@@ -1,7 +1,7 @@
 import pygame
 from circleshape import CircleShape
 from constants import *
-from shots import * 
+from shots import Shot 
 
 WHITE = (255,255,255)
 
