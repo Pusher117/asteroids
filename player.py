@@ -10,6 +10,8 @@ class Player(CircleShape):
         super().__init__(x,y,PLAYER_RADIUS)
         self.rotation = 0
         self.shot_cooldown = 0
+        self.invincible =False
+        self.invincibility_Timer=0
 
     def draw(self, screen):
         pygame.draw.polygon(screen, WHITE, self.triangle(), 2)
@@ -24,6 +26,11 @@ class Player(CircleShape):
         return [a, b, c]
     
     def rotate(self,dt):
+        # Update invincibility timer
+        if self.invincible:
+            self.invincibility_timer -= dt
+            if self.invincibility_timer <= 0:
+                self.invincible = False
         self.rotation+=PLAYER_TURN_SPEED * dt
 
     def update(self, dt):

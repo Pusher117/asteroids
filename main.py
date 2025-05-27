@@ -38,16 +38,19 @@ def main():
 #update objects        
         for obj in updatable: 
             obj.update(dt)
-#collision check
+#Asteroid collision check
         for asteroid in asteroids: 
             if player.collides(asteroid): 
                 lives -=1
                 if lives <=0: 
                     game_over_screen(screen,score)
                     return
-                player.position=pygame.Vector2(SCREEN_WIDTH/2,SCREEN_HEIGHT/2)
-                player.velocity=pygame.Vector2(0,0)
-                break #no double hits
+                else:
+                    player.position=pygame.Vector2(SCREEN_WIDTH/2,SCREEN_HEIGHT/2)
+                    player.velocity=pygame.Vector2(0,0)
+                    player.invincible = True
+                    player.invincibility_timer = 2.0
+                    break #no double hits
 
 #bullet collusion check
         for asteroid in asteroids: 
